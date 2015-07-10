@@ -12,6 +12,8 @@ var user = new Schema({
     profilePic: {type: String},
     BirthDate: {type: Date},
     Email : {type : String},
+    PhoneNumber :{type: Number},
+    Facebook :{type: String},
     Specialization : {type: String},
     Items: [Schema.Types.ObjectId],
     //Offers: [{
