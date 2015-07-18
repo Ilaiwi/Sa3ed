@@ -7,6 +7,9 @@ var path = require('path'),
     morgan = require('morgan'),
     methodOverride = require('method-override'),
     errorHandler = require('errorhandler');
+var flash = require('connect-flash');
+var passport = require('passport');
+var expressSession = require('express-session');
 
 module.exports = function(app) {
     app.engine('handlebars', exphbs.create({
@@ -39,7 +42,12 @@ module.exports = function(app) {
 
     // app.use('/public/', connect.static(path.join(__dirname, '../public')));
     app.use('/public/', express.static(path.join(__dirname, '../public')));
-
+    app.use(expressSession({secret: 'mySecretKey'}));
+    app.use(passport.initialize());
+    app.use(passport.session());
+    app.use(flash());
+    //var initPassport = require('./passport/init');
+    //initPassport(passport);
     if ('development' === app.get('env')) {
         // app.use(connect.errorHandler());
         app.use(errorHandler());

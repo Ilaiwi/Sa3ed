@@ -10,6 +10,10 @@ app.set('views', __dirname + '/views');
 app = config(app);
 mongoose.connect(dbConfig.url);
 
+mongoose.connection.on('open', function () {
+  console.log('Mongoose connected.');
+});
+
 var server = app.listen(app.get('port'), function() {
   console.log('Server up: http://localhost:' + app.get('port'));
 });
