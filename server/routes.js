@@ -14,6 +14,7 @@ module.exports.initialize = function(app, router) {
     router.get('/login',auth.login);
     router.get('/logout',auth.logout);
     router.get('/signup',auth.signup);
+    router.post('/signup',auth.signupPost);
     router.post('/images', image.create);
     router.post('/images/:image_id/like', image.like);
     router.post('/images/:image_id/comment', image.comment);

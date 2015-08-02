@@ -27,8 +27,18 @@ module.exports = function(app) {
     // app.use(connect.json());
     // app.use(connect.urlencoded());
 
-    app.use(bodyParser.urlencoded({ extended: false }));
-    app.use(bodyParser.json({uploadDir:path.join(__dirname, '../public/upload/temp')}));
+
+
+
+    //app.use(bodyParser.urlencoded({ extended: false }));
+    //app.use(bodyParser.json({uploadDir:path.join(__dirname, '../public/upload/temp')}));
+
+
+    app.use( bodyParser.json() );       // to support JSON-encoded bodies
+    app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+        extended: true
+    }));
+
 
     //app.use(bodyParser({
     //    uploadDir:path.join(__dirname, '../public/upload/temp')
